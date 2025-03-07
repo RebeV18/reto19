@@ -17,7 +17,6 @@ export const AppRouter = () => {
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <Footer />
       </Suspense>
       <Footer />
     </>

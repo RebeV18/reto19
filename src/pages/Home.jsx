@@ -20,7 +20,7 @@ const Home = () => {
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
-  
+
   const handlePassword = (event) => {
     setPassword(event.target.value);
   };
@@ -31,48 +31,62 @@ const Home = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
   };
 
   return (
-    <div className="flex flex-col">
-      <h1>Formulario Reto 19</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder="Digite su nombre"
-          type="text"
-          value={name}
-          onChange={handleName}
-        />
-        <input
-          placeholder="Digite su apellido"
-          type="text"
-          value={lastName}
-          onChange={handleLastName}
-        />
-        <input
-          placeholder="Digite su correo electrónico"
-          type="email"
-          value={email}
-          onChange={handleEmail}
-        />
-        <input
-          placeholder="Digite su contraseña"
-          type="text"
-          value={password}
-          onChange={handlePassword}
-        />
-        <input
-          placeholder="Digite su contraseña"
-          type="text"
-          value={cPassword}
-          onChange={handleCPassword}
-        />
-        <button className="btn" type="submit">
-          Enviar
-        </button>
-      </form>
-      {searchPerformed && !movieFound && <p>Película no encontrada</p>}
+    <div className="flex justify-center p-15">
+      <div className="border-2 border-teal-200 rounded-lg w-150">
+        <h1 className="text-center text-2xl font-semibold p-5">
+          Formulario Reto 19
+        </h1>
+        <form
+          className="flex flex-col justify-center items-center p-5 gap-5"
+          onSubmit={handleSubmit}
+        >
+          <input
+            placeholder="Digite su nombre"
+            className="border-2 border-sky-500 rounded-lg p-1.5"
+            type="text"
+            value={name}
+            onChange={handleName}
+          />
+          <input
+            placeholder="Digite su apellido"
+            className="border-2 border-sky-500 rounded-lg p-1.5"
+            type="text"
+            value={lastName}
+            onChange={handleLastName}
+          />
+          <input
+            placeholder="Digite su correo electrónico"
+            className="border-2 border-sky-500 rounded-lg p-1.5"
+            type="email"
+            value={email}
+            onChange={handleEmail}
+          />
+          <input
+            placeholder="Digite su contraseña"
+            className="border-2 border-sky-500 rounded-lg p-1.5"
+            type="text"
+            value={password}
+            onChange={handlePassword}
+          />
+          <input
+            placeholder="Digite su contraseña"
+            className="border-2 border-sky-500 rounded-lg p-1.5"
+            type="text"
+            value={cPassword}
+            onChange={handleCPassword}
+          />
+          <button
+            className="border-2 border-sky-500 rounded-lg p-1.5 mt-10"
+            type="submit"
+          >
+            Enviar
+          </button>
+        </form>
+        {searchPerformed && !movieFound && <p>Película no encontrada</p>}
+      </div>
     </div>
   );
 };

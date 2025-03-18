@@ -1,4 +1,4 @@
-# Reto 19: Formulario
+# Mi solución del Reto 19: Formulario
 
 1. Crea un componente llamado Formulario que tenga un formulario con los siguientes campos:
 - nombre: campo de texto para ingresar el nombre.

@@ -8,6 +8,7 @@ const Formulario = () => {
   const [cPassword, setCPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [resetTrigger, setResetTrigger] = useState(false);
 
   const passwordRef = useRef(null);
   const cpasswordRef = useRef(null);
@@ -20,18 +21,26 @@ const Formulario = () => {
     }
   }, [password, cPassword]);
 
+  useEffect(() => {
+    setNombre("");
+    setLastName("");
+    setEmail("");
+    setPassword("");
+    setCPassword("");
+    passwordRef.current.value = "";
+    cpasswordRef.current.value = "";
+  }, [resetTrigger]);
+
   const validarEmail = (email) => {
     const Regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return Regex.test(email);
   };
 
-  //manejo envio de formulario
   const handleSubmit = (e) => {
     e.preventDefault();
     setSuccess("");
     setError("");
 
-    //validar los datos requeridos
     if (!nombre || !lastName || !email) {
       setError("Todos los campos son requeridos");
       return;
@@ -47,15 +56,19 @@ const Formulario = () => {
       return;
     }
 
-    // mensaje de éxito
-    setSuccess("Formulario enviado con éxito");
+    setSuccess("Formulario enviado con éxito ✅");
+
+    setTimeout(() => {
+      setSuccess("");
+      setResetTrigger(!resetTrigger);
+    }, 1000);
   };
 
   return (
     <div className="flex justify-center p-5">
       <div>
-        <h1 className="text-center sm: text-1xl md:text-3xl lg:text-5xl font-semibold p-15">
-          Formulario Reto 19 - Formulario de Registro
+        <h1 className="text-center sm:text-1xl md:text-3xl lg:text-5xl font-semibold p-15">
+          Formulario Reto 19 - Registro
         </h1>
 
         {error && <p className="text-red-500">{error}</p>}
@@ -89,7 +102,7 @@ const Formulario = () => {
           <input
             type="password"
             placeholder="Ingrese su contraseña"
-            value={password}
+            ref={passwordRef}
             onChange={(e) => setPassword(e.target.value)}
             className="border-2 border-sky-500 rounded-lg p-1.5 sm:w-100 md:w-150"
           />
@@ -97,7 +110,7 @@ const Formulario = () => {
           <input
             type="password"
             placeholder="Confirme su contraseña"
-            value={cPassword}
+            ref={cpasswordRef}
             onChange={(e) => setCPassword(e.target.value)}
             className="border-2 border-sky-500 rounded-lg p-1.5 sm:w-100 md:w-150"
           />
